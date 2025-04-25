@@ -3,54 +3,125 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Logic Puzzle Race & Math Mystery</title>
+    <title>MathClub KPRIT</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       body {
         margin: 0;
         padding: 0;
-        background: linear-gradient(180deg, #0b0c2a 0%, #121645 100%);
-        font-family: "Poppins", sans-serif;
-        color: white;
+        font-family: "Inter", sans-serif;
+        color: #333;
         overflow-x: hidden;
+        background: linear-gradient(180deg, #0b0c2a 0%, #121645 100%);
       }
 
-      .container {
+      .header {
+        background-color: #4338ca;
+        color: white;
+        padding: 2rem 0;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin: 0;
+        letter-spacing: 0.05em;
+        color: white;
+      }
+
+      .header p {
+        font-size: 1.2rem;
+        margin: 0.5rem 0 0;
+        font-weight: 300;
+      }
+
+      .intro-section {
         max-width: 1200px;
-        margin: 0 auto;
-        padding: 50px 20px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background-color: white;
+        border-radius: 1rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e0e7ff;
         position: relative;
         z-index: 2;
       }
 
-      h1 {
-        font-size: 3rem;
-        margin-bottom: 20px;
-        color: #ffd700;
+      .intro-section h2 {
+        color: #4338ca;
         text-align: center;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
       }
 
-      h2,
-      h3 {
-        color: #ffffff;
+      .intro-section p {
         text-align: center;
+        margin-bottom: 1.5rem;
+        color: #4b5563;
+        font-size: 1.125rem;
       }
 
-      p,
-      li {
-        font-size: 1.2rem;
-        line-height: 1.8;
-        margin: 10px 0;
-      }
-
-      ul {
-        list-style: none;
+      .activities-list {
+        color: #1f2937;
+        font-size: 1.125rem;
+        margin-bottom: 1.5rem;
+        list-style-position: inside;
         padding-left: 0;
       }
 
-      li::before {
+      .activities-list li span {
+        font-weight: 600;
+      }
+
+      .activity-details {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: 1rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        position: relative;
+        z-index: 2;
+      }
+
+      .activity-details h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #ffd700;
+        text-align: center;
+      }
+
+      .activity-details h2,
+      .activity-details h3 {
+        color: #333;
+        text-align: center;
+      }
+
+      .activity-details p,
+      .activity-details li {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin: 10px 0;
+        color: #333;
+      }
+
+      .activity-details ul {
+        list-style: none;
+        padding-left: 1rem;
+      }
+
+      .activity-details li::before {
         content: "\2022";
         color: #ffd700;
-        margin-right: 10px;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
       }
 
       .highlight {
@@ -61,9 +132,15 @@
         font-weight: bold;
       }
 
+      hr {
+        margin: 40px 0;
+        border-color: #ffd700;
+        border-width: 1px;
+      }
+
       .stars,
       .symbols {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
@@ -73,8 +150,7 @@
         pointer-events: none;
       }
 
-      .stars span,
-      .symbols span {
+      .stars span {
         position: absolute;
         display: block;
         width: 4px;
@@ -84,6 +160,7 @@
       }
 
       .symbols span {
+        position: absolute;
         color: #ffd700;
         font-size: 26px;
         background: none;
@@ -108,13 +185,25 @@
         }
       }
 
+      footer {
+        text-align: center;
+        font-size: 0.875rem;
+        color: #d1d5db;
+        padding-bottom: 1rem;
+        margin-top: 2rem;
+      }
+
       @media screen and (max-width: 768px) {
-        h1 {
+        .header h1 {
           font-size: 2rem;
         }
 
-        p,
-        li {
+        .activity-details h1 {
+          font-size: 2rem;
+        }
+
+        .activity-details p,
+        .activity-details li {
           font-size: 1rem;
         }
       }
@@ -143,7 +232,32 @@
       >
     </div>
 
-    <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1>MathClub KPRIT</h1>
+      <p>Welcome to MathClub Activities at KPRIT Annual Day Technical Fest</p>
+    </header>
+
+    <!-- Introduction Section -->
+    <section class="intro-section">
+      <h2>Exciting Math Activities Await You!</h2>
+      <p>
+        On behalf of the Math Club, we are organizing three exciting activities
+        as part of our annual technical fest:
+      </p>
+      <ol class="activities-list">
+        <li><span>Logic Puzzle Race</span></li>
+        <li><span>Math Mystery</span></li>
+        <li><span>Math Escape Room</span></li>
+      </ol>
+      <p>
+        All activities will challenge your logical thinking and problem-solving
+        abilities through a series of aptitude-based questions.
+      </p>
+    </section>
+
+    <!-- Activity Details -->
+    <section class="activity-details">
       <h1>Activity 1: Logic Puzzle Race</h1>
       <h2>Objective:</h2>
       <p>
@@ -159,7 +273,7 @@
       <ul>
         <li>Roll the dice and move forward according to the number you get.</li>
         <li>
-          If you land on a square marked with a “?”, prepare to answer a logic
+          If you land on a square marked with a "?", prepare to answer a logic
           or math puzzle!
         </li>
         <li>Answer correctly to stay on your square.</li>
@@ -185,7 +299,7 @@
         The first player to reach the final square is the winner!
       </p>
 
-      <hr style="margin: 40px 0; border-color: #ffd700" />
+      <hr />
 
       <h1>Activity 2: Math Mystery</h1>
       <h2>Objective:</h2>
@@ -253,7 +367,7 @@
         of Math Mystery!
       </p>
 
-      <hr style="margin: 40px 0; border-color: #ffd700" />
+      <hr />
 
       <h1>Activity 3: Math Escape Room</h1>
       <h2>Objective:</h2>
@@ -266,7 +380,7 @@
       <h2>Participants:</h2>
       <p class="highlight">Each team consists of 2 members.</p>
       <p>
-        If you don’t have a teammate, don’t worry! You’ll be paired randomly at
+        If you don't have a teammate, don't worry! You'll be paired randomly at
         the venue.
       </p>
 
@@ -281,23 +395,23 @@
           leads you to find a hidden box or ball somewhere on the campus.
         </li>
         <li>
-          The Secret Number: Inside the object, you’ll find a number. Return to
-          the venue with it—it’s your unique question set number.
+          The Secret Number: Inside the object, you'll find a number. Return to
+          the venue with it—it's your unique question set number.
         </li>
         <li>
-          System Setup: You’ll be assigned a laptop or computer where the game
+          System Setup: You'll be assigned a laptop or computer where the game
           begins.
         </li>
         <li>Follow these steps:</li>
         <ul>
           <li>
-            Enter both participants’ names, email IDs, phone numbers, and any
+            Enter both participants' names, email IDs, phone numbers, and any
             other details requested by the Computer program.
           </li>
           <li>Read the rules carefully.</li>
-          <li>Press “YES” to start.</li>
+          <li>Press "YES" to start.</li>
           <li>Enter the secret number you found.</li>
-          <li>Press “YES” again to begin the quiz.</li>
+          <li>Press "YES" again to begin the quiz.</li>
         </ul>
       </ul>
 
@@ -305,7 +419,7 @@
       <ul>
         <li>A timer starts as soon as the quiz begins.</li>
         <li>Each team must answer one question at a time.</li>
-        <li>You can’t skip or go back to previous questions.</li>
+        <li>You can't skip or go back to previous questions.</li>
         <li>Points are awarded for every correct answer.</li>
         <li>No negative marking—so take your best shot!</li>
       </ul>
@@ -324,6 +438,9 @@
         teams have the same score, the fastest team among them (based on time
         taken to finish) will be declared the winner.
       </p>
-    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>© 2025 MathClub KPRIT. All rights reserved.</footer>
   </body>
 </html>
