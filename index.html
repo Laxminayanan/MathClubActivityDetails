@@ -3,156 +3,327 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MathClub KPRIT - Treasure Hunt</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <title>Logic Puzzle Race & Math Mystery</title>
     <style>
-      * {
+      body {
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
+        background: linear-gradient(180deg, #0b0c2a 0%, #121645 100%);
         font-family: "Poppins", sans-serif;
-      }
-
-      body {
-        background: linear-gradient(to right, #f3f4f6, #e0f7fa);
-        color: #333;
-        padding: 2rem;
-        position: relative;
+        color: white;
         overflow-x: hidden;
       }
 
-      body::before {
-        content: "\221E \2211 \03C0 \222B \2248 \2260 \00D7 \00B1";
-        position: absolute;
-        font-size: 5rem;
-        opacity: 0.05;
-        top: 10%;
-        left: 5%;
-        white-space: nowrap;
-        pointer-events: none;
-      }
-
       .container {
-        max-width: 900px;
+        max-width: 1200px;
         margin: 0 auto;
-        background: white;
-        border-radius: 16px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        padding: 2rem 3rem;
+        padding: 50px 20px;
         position: relative;
-        z-index: 1;
+        z-index: 2;
       }
 
       h1 {
-        color: #00796b;
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: #ffd700;
         text-align: center;
-        margin-bottom: 1rem;
-        font-size: 2.2rem;
       }
 
-      h2 {
-        color: #004d40;
-        margin-top: 2rem;
-        margin-bottom: 0.5rem;
+      h2,
+      h3 {
+        color: #ffffff;
+        text-align: center;
       }
 
-      p {
-        font-size: 1rem;
-        line-height: 1.6;
+      p,
+      li {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        margin: 10px 0;
       }
 
       ul {
-        margin-left: 1.5rem;
-        margin-top: 0.5rem;
+        list-style: none;
+        padding-left: 0;
       }
 
-      .button-container {
-        text-align: center;
-        margin-top: 2rem;
+      li::before {
+        content: "\2022";
+        color: #ffd700;
+        margin-right: 10px;
       }
 
-      .register-btn {
-        background-color: #00796b;
-        color: white;
-        padding: 0.75rem 2rem;
-        font-size: 1rem;
-        border: none;
-        border-radius: 8px;
-        text-decoration: none;
-        transition: background-color 0.3s ease;
+      .highlight {
+        background-color: #ffd700;
+        color: #121645;
+        padding: 0 6px;
+        border-radius: 4px;
+        font-weight: bold;
       }
 
-      .register-btn:hover {
-        background-color: #004d40;
+      .stars,
+      .symbols {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .stars span,
+      .symbols span {
+        position: absolute;
+        display: block;
+        width: 4px;
+        height: 4px;
+        background: white;
+        animation: animateStars 50s linear infinite;
+      }
+
+      .symbols span {
+        color: #ffd700;
+        font-size: 26px;
+        background: none;
+        animation: animateSymbols 30s linear infinite;
+      }
+
+      @keyframes animateStars {
+        0% {
+          transform: translateY(0) translateX(0);
+        }
+        100% {
+          transform: translateY(100vh) translateX(20vw);
+        }
+      }
+
+      @keyframes animateSymbols {
+        0% {
+          transform: translateY(-10%) rotate(0deg);
+        }
+        100% {
+          transform: translateY(110vh) rotate(360deg);
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        h1 {
+          font-size: 2rem;
+        }
+
+        p,
+        li {
+          font-size: 1rem;
+        }
       }
     </style>
   </head>
+
   <body>
+    <div class="stars">
+      <span style="top: 10%; left: 20%"></span>
+      <span style="top: 30%; left: 80%"></span>
+      <span style="top: 50%; left: 50%"></span>
+      <span style="top: 70%; left: 10%"></span>
+      <span style="top: 90%; left: 90%"></span>
+    </div>
+
+    <div class="symbols">
+      <span style="top: 5%; left: 10%">&#x221E;</span>
+      <span style="top: 15%; left: 40%">&#x03C0;</span>
+      <span style="top: 25%; left: 70%">+</span>
+      <span style="top: 35%; left: 20%">=</span>
+      <span style="top: 45%; left: 80%">&#x03B8;</span>
+      <span style="top: 60%; left: 30%">&#x222B;</span>
+      <span style="top: 75%; left: 50%">&#x2202;y/&#x2202;x</span>
+      <span style="top: 90%; left: 65%"
+        >-b&plusmn;&radic;b<sup>2</sup>-4ac/2a</span
+      >
+    </div>
+
     <div class="container">
-      <h1>Math Club KPRIT</h1>
-      <h2>Welcome to MathClub Activities at KPRIT Annual Day Technical Fest</h2>
+      <h1>Activity 1: Logic Puzzle Race</h1>
+      <h2>Objective:</h2>
       <p>
-        On behalf of the <strong>Math Club</strong>, we are organizing three
-        exciting activities as part of our annual technical fest:
+        Put your critical thinking and problem-solving skills to the ultimate
+        test in a thrilling race packed with logic challenges and mathematical
+        twists!
       </p>
+
+      <h2>Participants:</h2>
+      <p class="highlight">3 individual players per round</p>
+
+      <h2>How to Play:</h2>
       <ul>
-        <li>Treasure Hunt</li>
-        <li>Snake and Ladder</li>
-        <li>Math Mystery</li>
+        <li>Roll the dice and move forward according to the number you get.</li>
+        <li>
+          If you land on a square marked with a “?”, prepare to answer a logic
+          or math puzzle!
+        </li>
+        <li>Answer correctly to stay on your square.</li>
+        <li>
+          Answer incorrectly? Move backward the same number of steps you rolled.
+        </li>
+        <li>
+          You have 3 total chances — each wrong or skipped answer counts as one
+          strike.
+        </li>
+        <li>Three strikes and you're out!</li>
       </ul>
 
-      <p>
-        All activities will challenge your logical thinking and problem-solving
-        abilities through a series of
-        <strong>aptitude-based questions</strong> covering the following topics:
-      </p>
+      <h2>Rules:</h2>
       <ul>
-        <li>Arithmetic</li>
-        <li>Decoding and Coding (Letter Series)</li>
-        <li>Calendar Problems</li>
-        <li>Problems on Ages</li>
-        <li>Blood Relations</li>
-        <li>Simple Interest</li>
-        <li>Probability</li>
-        <li>Number Series</li>
-        <li>Profit and Loss</li>
-        <li>Percentage</li>
+        <li>No calculators, mobile phones, or external help allowed.</li>
+        <li>Use only your brain — rely on logic and math skills!</li>
+        <li>Be respectful and fair to all players.</li>
       </ul>
 
-      <h2>Treasure Hunt - Activity Details</h2>
-      <p>
-        This activity is designed for groups of <strong>two members</strong>.
-        Once registered, the team will be contacted with further details.
+      <h2>Winning Condition:</h2>
+      <p class="highlight">
+        The first player to reach the final square is the winner!
       </p>
 
-      <h3>Instructions:</h3>
+      <hr style="margin: 40px 0; border-color: #ffd700" />
+
+      <h1>Activity 2: Math Mystery</h1>
+      <h2>Objective:</h2>
       <p>
-        Participants will be informed of the exact location
-        <strong>2 days before</strong> the event. At the venue, teams will solve
-        <strong>15 aptitude questions</strong> covering topics such as:
+        <strong>Math Mystery</strong> is a level-based team challenge that tests
+        your logic, teamwork, and curiosity through exciting math puzzles.
       </p>
+
+      <h2>Team Formation:</h2>
       <ul>
-        <li>Logical Reasoning</li>
-        <li>Age-related problems</li>
-        <li>Calendar-based questions</li>
-        <li>Other aptitude challenges</li>
+        <li>Each team must consist of 4 members.</li>
+        <li>
+          Participants without teams will be randomly grouped into teams of four
+          at the venue.
+        </li>
       </ul>
 
-      <h3>Evaluation and Winners:</h3>
+      <h2>Activity Flow:</h2>
+      <ul>
+        <li>
+          <strong>Level Progression</strong>: The game has 4 levels, each
+          increasing in difficulty.
+        </li>
+        <li>Only one team member plays at the start, chosen by the team.</li>
+      </ul>
+
+      <h3>Level 1</h3>
+      <ul>
+        <li>One member (Participant A) plays.</li>
+        <li>If correct: proceed to Level 2 and pick a second team member.</li>
+        <li>If incorrect: team is eliminated (possible redemption).</li>
+      </ul>
+
+      <h3>Level 2</h3>
+      <ul>
+        <li>Two members collaborate.</li>
+        <li>If correct: proceed to Level 3 and add one more member.</li>
+        <li>If incorrect: eliminated (possible redemption).</li>
+      </ul>
+
+      <h3>Level 3</h3>
+      <ul>
+        <li>Three members solve the challenge.</li>
+        <li>If correct: proceed to Level 4, with all four playing.</li>
+        <li>If incorrect: eliminated.</li>
+      </ul>
+
+      <h3>Level 4 (Final)</h3>
+      <ul>
+        <li>All four members participate.</li>
+        <li>If correct: team wins!</li>
+        <li>If incorrect: eliminated (with a chance for redemption).</li>
+      </ul>
+
+      <h2>Redemption: Wild Card Entry</h2>
       <p>
-        All teams will be evaluated based on their <strong>score</strong> from
-        the aptitude test. The team with the <strong>highest score</strong> will
-        be declared the winner and moved to the final location of the Treasure
-        Hunt.
+        Eliminated teams with high enthusiasm may perform a fun act (dance,
+        sing, joke) to impress the audience or judges. If successful, they
+        re-enter at the level they were eliminated.
       </p>
 
-      <div class="button-container">
-        <a href="#" class="register-btn">Register & Pay</a>
-        <!-- Replace # with your actual payment link -->
-      </div>
+      <h2>Winning Condition:</h2>
+      <p class="highlight">
+        The team that completes all four levels correctly is declared the winner
+        of Math Mystery!
+      </p>
+
+      <hr style="margin: 40px 0; border-color: #ffd700" />
+
+      <h1>Activity 3: Math Escape Room</h1>
+      <h2>Objective:</h2>
+      <p>
+        Dive into an exciting adventure filled with logic, clues, and math! This
+        activity challenges your critical thinking, teamwork, and mathematical
+        reasoning through a series of interactive, brain-teasing puzzles.
+      </p>
+
+      <h2>Participants:</h2>
+      <p class="highlight">Each team consists of 2 members.</p>
+      <p>
+        If you don’t have a teammate, don’t worry! You’ll be paired randomly at
+        the venue.
+      </p>
+
+      <h2>How to Play:</h2>
+      <ul>
+        <li>
+          Gadget Submission: Participants must submit their mobile phones and
+          other electronic devices to the coordinators upon arrival.
+        </li>
+        <li>
+          The First Clue: Each team will receive a riddle or clue. This clue
+          leads you to find a hidden box or ball somewhere on the campus.
+        </li>
+        <li>
+          The Secret Number: Inside the object, you’ll find a number. Return to
+          the venue with it—it’s your unique question set number.
+        </li>
+        <li>
+          System Setup: You’ll be assigned a laptop or computer where the game
+          begins.
+        </li>
+        <li>Follow these steps:</li>
+        <ul>
+          <li>
+            Enter both participants’ names, email IDs, phone numbers, and any
+            other details requested by the Computer program.
+          </li>
+          <li>Read the rules carefully.</li>
+          <li>Press “YES” to start.</li>
+          <li>Enter the secret number you found.</li>
+          <li>Press “YES” again to begin the quiz.</li>
+        </ul>
+      </ul>
+
+      <h2>Game Mechanics:</h2>
+      <ul>
+        <li>A timer starts as soon as the quiz begins.</li>
+        <li>Each team must answer one question at a time.</li>
+        <li>You can’t skip or go back to previous questions.</li>
+        <li>Points are awarded for every correct answer.</li>
+        <li>No negative marking—so take your best shot!</li>
+      </ul>
+
+      <h2>Rules:</h2>
+      <ul>
+        <li>No calculators, phones, or outside help allowed.</li>
+        <li>You may only discuss with your teammate—no helping other teams.</li>
+        <li>Use only your math skills, logic, and teamwork.</li>
+        <li>Maintain respectful behavior throughout the activity.</li>
+      </ul>
+
+      <h2>Winning Criteria:</h2>
+      <p class="highlight">
+        The team with the highest score at the end of the quiz wins. If multiple
+        teams have the same score, the fastest team among them (based on time
+        taken to finish) will be declared the winner.
+      </p>
     </div>
   </body>
 </html>
