@@ -207,6 +207,38 @@
           font-size: 1rem;
         }
       }
+
+      /* Updated styles for falling symbols */
+      .falling-symbol {
+        position: absolute;
+        top: 0;
+        font-size: 24px;
+        animation: fall 8s linear infinite;
+        pointer-events: none;
+        z-index: 9999;
+        font-weight: bold;
+      }
+
+      /* Color class for red symbols */
+      .symbol-red {
+        color: #ff3333;
+      }
+
+      /* Color class for yellow symbols */
+      .symbol-yellow {
+        color: #ffd700;
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(120vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
     </style>
   </head>
 
@@ -219,18 +251,47 @@
       <span style="top: 90%; left: 90%"></span>
     </div>
 
-    <div class="symbols">
-      <span style="top: 5%; left: 10%">&#x221E;</span>
-      <span style="top: 15%; left: 40%">&#x03C0;</span>
-      <span style="top: 25%; left: 70%">+</span>
-      <span style="top: 35%; left: 20%">=</span>
-      <span style="top: 45%; left: 80%">&#x03B8;</span>
-      <span style="top: 60%; left: 30%">&#x222B;</span>
-      <span style="top: 75%; left: 50%">&#x2202;y/&#x2202;x</span>
-      <span style="top: 90%; left: 65%"
-        >-b&plusmn;&radic;b<sup>2</sup>-4ac/2a</span
-      >
-    </div>
+    <div class="symbols" id="fallingSymbolsContainer"></div>
+
+    <script>
+      const symbols = [
+        "&#x221E;", // ∞
+        "&#x03C0;", // π
+        "+",
+        "-",
+        "=",
+        "×",
+        "÷",
+        "&radic;", // √
+        "&#x222B;", // ∫
+        "&#x2202;", // ∂
+        "&#x03B8;", // θ
+        "e<sup>iπ</sup>+1=0",
+        "log<sub>10</sub>(x)",
+        "e<sup>x</sup>",
+        "∫ x dx",
+      ];
+
+      function spawnSymbol() {
+        const symbol = document.createElement("div");
+        symbol.className = "falling-symbol";
+
+        // Randomly choose between red and yellow colors
+        if (Math.random() < 0.5) {
+          symbol.classList.add("symbol-red");
+        } else {
+          symbol.classList.add("symbol-yellow");
+        }
+
+        symbol.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+        symbol.style.left = Math.random() * 100 + "vw";
+        document.getElementById("fallingSymbolsContainer").appendChild(symbol);
+
+        setTimeout(() => symbol.remove(), 8000);
+      }
+
+      setInterval(spawnSymbol, 300);
+    </script>
 
     <!-- Header -->
     <header class="header">
@@ -242,8 +303,8 @@
     <section class="intro-section">
       <h2>Exciting Math Activities Await You!</h2>
       <p>
-        On behalf of the Math Club, we are organizing three exciting activities
-        as part of our annual technical fest:
+        On Behalf Of Humanities & Science Department (Mathematics) , we are organizing
+        three exciting activities as part of our annual technical fest:
       </p>
       <ol class="activities-list">
         <li><span>Logic Puzzle Race</span></li>
@@ -267,7 +328,7 @@
       </p>
 
       <h2>Participants:</h2>
-      <p class="highlight">3 individual players per round</p>
+      <p class="highlight">Each Team Consists 3 Members Per Round.</p>
 
       <h2>How to Play:</h2>
       <ul>
@@ -278,7 +339,7 @@
         </li>
         <li>Answer correctly to stay on your square.</li>
         <li>
-          Answer incorrectly? Move backward the same number of steps you rolled.
+          If Answered incorrectly? Move backward To the Same number of steps you Rolled.
         </li>
         <li>
           You have 3 total chances — each wrong or skipped answer counts as one
@@ -296,7 +357,7 @@
 
       <h2>Winning Condition:</h2>
       <p class="highlight">
-        The first player to reach the final square is the winner!
+        The First Team To Reach The Final Square is Declared As Winner!
       </p>
 
       <hr />
@@ -329,37 +390,61 @@
       <h3>Level 1</h3>
       <ul>
         <li>One member (Participant A) plays.</li>
-        <li>In This Level The Participant Should Answer Single Question Without Taking The Help Of Other Team Members.</li>
-        <li>If Answered correctly: proceed to Level 2 By picking The second team member.</li>
+        <li>
+          In This Level The Participant Should Answer Single Question Without
+          Taking The Help Of Other Team Members.
+        </li>
+        <li>
+          If Answered correctly: proceed to Level 2 By picking The second team
+          member.
+        </li>
         <li>If Answered incorrectly: Team is eliminated.</li>
       </ul>
 
       <h3>Level 2</h3>
       <ul>
         <li>Two members collaborate.</li>
-        <li>In This Level Both (Participant A) and (Participant B) Can Work Together And Must Answer The Two Questions.</li>
-        <li>If Answered correctly: proceed to Level 3 By picking The Third team member.</li>
+        <li>
+          In This Level Both (Participant A) and (Participant B) Can Work
+          Together And Must Answer The Two Questions.
+        </li>
+        <li>
+          If Answered correctly: proceed to Level 3 By picking The Third team
+          member.
+        </li>
         <li>If Answered incorrectly: Team is eliminated.</li>
       </ul>
 
       <h3>Level 3</h3>
       <ul>
         <li>The Three members Will be Going To solve the challenge.</li>
-        <li>In This Level (Participant A), (Participant B) and (Participant C) Can Work Together And Must Answer The Three Questions.</li>
-        <li>If Answered correctly: proceed to Level 4, with all four playing.</li>
+        <li>
+          In This Level (Participant A), (Participant B) and (Participant C) Can
+          Work Together And Must Answer The Three Questions.
+        </li>
+        <li>
+          If Answered correctly: proceed to Level 4, with all four playing.
+        </li>
         <li>If Answered incorrectly: Team is eliminated.</li>
       </ul>
 
       <h3>Level 4 (Final)</h3>
       <ul>
-        <li>In This Level All four members Will be Going To solve The Questions.</li>
-        <li>Note: In This 4th Level (Last Level) There Will Be Questions/Challenges Based On Sudoku.</li>
-        <li>In This Level (Participant A), (Participant B), (Participant C),(Participant D) Can Work Together And Must Answer All The Four Questions.</li>
+        <li>
+          In This Level All four members Will be Going To solve The Questions.
+        </li>
+        <li>
+          Note: In This 4th Level (Last Level) There Will Be
+          Questions/Challenges Based On Sudoku.
+        </li>
+        <li>
+          In This Level (Participant A), (Participant B), (Participant
+          C),(Participant D) Can Work Together And Must Answer All The Four
+          Questions.
+        </li>
         <li>If Answered correctly: Team wins!</li>
         <li>If Answered incorrectly: Team is eliminated.</li>
       </ul>
-
-      
 
       <h2>Winning Condition:</h2>
       <p class="highlight">
@@ -391,13 +476,14 @@
           other electronic devices to the coordinators upon arrival.
         </li>
         <li>
-          The First Clue: Each team will receive a riddle or clue. This clue
-          leads you to find a hidden box or ball somewhere on the campus.
+          The First Clue: Each team will receive a riddle or clue that leads to a hidden box or ball located somewhere on the campus.
+          Note⚠️: Participants must return to the Venue with the Hidden Ball Inside The Hidden box within 15 minutes, else You Will be Disqualified.
         </li>
         <li>
           The Secret Number: Inside the object, you'll find a number. Return to
-          the venue with it—it's your unique question set number.
+          the venue with it. Note ⚠️: Enter this Secret number as instructed by the Computer program prompt; otherwise, you will be unable to proceed with the activity and You may disqualified..
         </li>
+      
         <li>
           System Setup: You'll be assigned a laptop or computer where the game
           begins.
@@ -418,8 +504,12 @@
       <h2>Game Mechanics:</h2>
       <ul>
         <li>A timer starts as soon as the quiz begins.</li>
-        <li>The Team must answer The question To Move Towards The Other Questions.</li>
-        <li>You can't skip or go back to previous questions For Re-Attempting.</li>
+        <li>
+          The Team must answer The question To Move Towards The Other Questions.
+        </li>
+        <li>
+          You can't skip or go back to previous questions For Re-Attempting.
+        </li>
         <li>Points are awarded for every correct answer.</li>
         <li>No negative marking—so take your best shot!</li>
       </ul>
