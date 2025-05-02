@@ -50,6 +50,7 @@
         border: 1px solid #e0e7ff;
         position: relative;
         z-index: 2;
+        text-align: center;
       }
 
       .intro-section h2 {
@@ -70,11 +71,18 @@
         color: #1f2937;
         font-size: 1.125rem;
         margin-bottom: 1.5rem;
-        list-style-position: inside;
         padding-left: 0;
+        list-style-position: inside;
+        text-align: left; /* Ensure text alignment is consistent */
+        display: inline-block; /* This helps with centering the list as a whole */
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .activities-list li span {
+        text-indent: -1.5em;
+        padding-left: 1.5em;
+        text-align: left;
         font-weight: 600;
       }
 
@@ -92,7 +100,7 @@
       .activity-details h1 {
         font-size: 2.5rem;
         margin-bottom: 1rem;
-        color: #ffd700;
+        color: #4338ca; /* #ffd700 (Old yellow), #0b0c2a (very dark blue - matches your background), #1e3a8a (deep blue), #172554 (navy blue), #1e40af (royal blue), #4338ca (indigo blue - matches your header)*/
         text-align: center;
       }
 
@@ -213,7 +221,7 @@
         position: absolute;
         top: 0;
         font-size: 24px;
-        animation: fall 8s linear infinite;
+        animation: fall 20s linear infinite;
         pointer-events: none;
         z-index: 9999;
         font-weight: bold;
@@ -227,6 +235,29 @@
       /* Color class for yellow symbols */
       .symbol-yellow {
         color: #ffd700;
+      }
+
+      /* New register button styles */
+      .register-button {
+        display: inline-block;
+        background-color: #ff0000;
+        color: white;
+        font-weight: bold;
+        font-size: 1.2rem;
+        text-decoration: none;
+        padding: 12px 30px;
+        border-radius: 30px;
+        margin: 20px auto;
+        border: 3px solid rgba(255, 0, 0, 0.7);
+        box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        text-align: center;
+      }
+
+      .register-button:hover {
+        background-color: #e60000;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(255, 0, 0, 0.4);
       }
 
       @keyframes fall {
@@ -266,10 +297,45 @@
         "&#x222B;", // ∫
         "&#x2202;", // ∂
         "&#x03B8;", // θ
+        "&#x03C3;", // σ
+        "&#x03BB;", // λ
+        "&#x03B1;", // α
+        "&#x03B2;", // β
+        "&#x03B3;", // γ
+        "&#x03BC;", // μ
+        "&#x03A9;", // Ω
+        "&#x03A6;", // Φ
+        "&#x03A8;", // Ψ
+        "&#x2211;", // Σ
+        "&#x220F;", // Π
+        "&#x2208;", // ∈
+        "&#x2229;", // ∩
+        "&#x222A;", // ∪
+        "&#x2264;", // ≤
+        "&#x2265;", // ≥
+        "&#x2260;", // ≠
+        "&#x2248;", // ≈
+        "&#x221A;", // √
+        "&#x221D;", // ∝
         "e<sup>iπ</sup>+1=0",
         "log<sub>10</sub>(x)",
         "e<sup>x</sup>",
         "∫ x dx",
+        "f(x)",
+        "f′(x)",
+        "dy/dx",
+        "∂z/∂x",
+        "sin(θ)",
+        "cos(θ)",
+        "tan(θ)",
+        "a<sup>2</sup>+b<sup>2</sup>=c<sup>2</sup>",
+        "x̄",
+        "σ<sup>2</sup>",
+        "(a+b)<sup>2</sup>",
+        "x<sub>n+1</sub>",
+        "lim<sub>x→∞</sub>",
+        "n!",
+        "x<sub>i</sub>",
       ];
 
       function spawnSymbol() {
@@ -283,14 +349,23 @@
           symbol.classList.add("symbol-yellow");
         }
 
-        symbol.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+        // Get a random symbol, ensuring it's different from the last few
+        const randomIndex = Math.floor(Math.random() * symbols.length);
+        symbol.innerHTML = symbols[randomIndex];
+
+        // Random horizontal position
         symbol.style.left = Math.random() * 100 + "vw";
+
+        // Slightly random starting position vertically
+        symbol.style.top = Math.random() * 10 - 20 + "px";
+
         document.getElementById("fallingSymbolsContainer").appendChild(symbol);
 
-        setTimeout(() => symbol.remove(), 8000);
+        setTimeout(() => symbol.remove(), 15000); // Matches the longer animation duration
       }
 
-      setInterval(spawnSymbol, 300);
+      // Random interval between 500-900ms for more natural appearance
+      setInterval(spawnSymbol, 500 + Math.random() * 400);
     </script>
 
     <!-- Header -->
@@ -303,8 +378,9 @@
     <section class="intro-section">
       <h2>Exciting Math Activities Await You!</h2>
       <p>
-        On Behalf Of Humanities & Science Department (Mathematics) , we are organizing
-        three exciting activities as part of our annual technical fest:
+        On Behalf Of Humanities & Science Department (Mathematics) , we are
+        organizing three exciting activities as part of our annual technical
+        fest:
       </p>
       <ol class="activities-list">
         <li><span>Logic Puzzle Race</span></li>
@@ -315,6 +391,14 @@
         All activities will challenge your logical thinking and problem-solving
         abilities through a series of aptitude-based questions.
       </p>
+      <p>Click below to register for the event.</p>
+      <a
+        class="register-button"
+        href="https://forms.gle/HTmsZWaKkgYKCpr6A"
+        target="_blank"
+      >
+        REGISTER NOW
+      </a>
     </section>
 
     <!-- Activity Details -->
@@ -339,7 +423,8 @@
         </li>
         <li>Answer correctly to stay on your square.</li>
         <li>
-          If Answered incorrectly? Move backward To the Same number of steps you Rolled.
+          If Answered incorrectly? Move backward To the Same number of steps you
+          Rolled.
         </li>
         <li>
           You have 3 total chances — each wrong or skipped answer counts as one
@@ -476,14 +561,18 @@
           other electronic devices to the coordinators upon arrival.
         </li>
         <li>
-          The First Clue: Each team will receive a riddle or clue that leads to a hidden box or ball located somewhere on the campus.
-          Note⚠️: Participants must return to the Venue with the Hidden Ball Inside The Hidden box within 15 minutes, else You Will be Disqualified.
+          The First Clue: Each team will receive a riddle or clue that leads to
+          a hidden box or ball located somewhere on the campus. Note⚠️:
+          Participants must return to the Venue with the Hidden Ball Inside The
+          Hidden box within 15 minutes, else You Will be Disqualified.
         </li>
         <li>
           The Secret Number: Inside the object, you'll find a number. Return to
-          the venue with it. Note ⚠️: Enter this Secret number as instructed by the Computer program prompt; otherwise, you will be unable to proceed with the activity and You may disqualified..
+          the venue with it. Note ⚠️: Enter this Secret number as instructed by
+          the Computer program prompt; otherwise, you will be unable to proceed
+          with the activity and You may disqualified..
         </li>
-      
+
         <li>
           System Setup: You'll be assigned a laptop or computer where the game
           begins.
