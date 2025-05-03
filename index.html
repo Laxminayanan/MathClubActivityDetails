@@ -73,8 +73,8 @@
         margin-bottom: 1.5rem;
         padding-left: 0;
         list-style-position: inside;
-        text-align: left; 
-        display: inline-block; 
+        text-align: left; /* Ensure text alignment is consistent */
+        display: inline-block; /* This helps with centering the list as a whole */
         margin-left: auto;
         margin-right: auto;
       }
@@ -100,7 +100,7 @@
       .activity-details h1 {
         font-size: 2.5rem;
         margin-bottom: 1rem;
-        color: #4338ca; /* #ffd700 (Old yellow), #0b0c2a (very dark blue - matches your background), #1e3a8a (deep blue), #172554 (navy blue), #1e40af (royal blue), #4338ca (indigo blue - matches your header)*/
+        color: #4338ca; /* #ffd700 (Old yellow), #0b0c2a (very dark blue - matches your background), #1e3a8a (deep blue), #172554 (navy blue), #1e40af (royal blue), #4338ca (indigo blue - matches our header of Website)*/
         text-align: center;
       }
 
@@ -260,6 +260,25 @@
         box-shadow: 0 6px 12px rgba(255, 0, 0, 0.4);
       }
 
+      /* New registration section styles */
+      .registration-section {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background-color: white;
+        border-radius: 1rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 2;
+        text-align: center; /* Center all content in this section */
+      }
+
+      .registration-section p {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
       @keyframes fall {
         0% {
           transform: translateY(0) rotate(0deg);
@@ -391,14 +410,6 @@
         All activities will challenge your logical thinking and problem-solving
         abilities through a series of aptitude-based questions.
       </p>
-      <p>Click below to register for the event.</p>
-      <a
-        class="register-button"
-        href="https://forms.gle/HTmsZWaKkgYKCpr6A"
-        target="_blank"
-      >
-        REGISTER NOW
-      </a>
     </section>
 
     <!-- Activity Details -->
@@ -411,8 +422,13 @@
         twists!
       </p>
 
-      <h2>Participants:</h2>
-      <p class="highlight">Each Team Consists 3 Members Per Round.</p>
+      <h2>Team Formation:</h2>
+      <p class="highlight">Each team must consist of 5 members.</p>
+      <p>
+        Note⚠️: "Three members from the team will be answer the questions, one
+        will roll the dice, and one will move Accordingly on the Logic
+        Puzzle Race mat."
+      </p>
 
       <h2>How to Play:</h2>
       <ul>
@@ -456,11 +472,7 @@
 
       <h2>Team Formation:</h2>
       <ul>
-        <li>Each team must consist of 4 members.</li>
-        <li>
-          Participants without teams will be randomly grouped into teams of four
-          at the venue.
-        </li>
+        <p class="highlight">Each team must consist of 4 members.</p>
       </ul>
 
       <h2>Activity Flow:</h2>
@@ -516,19 +528,18 @@
       <h3>Level 4 (Final)</h3>
       <ul>
         <li>
-          In This Level All four members Will be Going To solve The Questions.
+          In This Level All four members Will be Going To solve The Question.
         </li>
         <li>
-          Note: In This 4th Level (Last Level) There Will Be
-          Questions/Challenges Based On Sudoku.
+          Note: In This 4th Level (Last Level) There Will Be Question/Challenge
+          Based On Sudoku.
         </li>
         <li>
           In This Level (Participant A), (Participant B), (Participant
-          C),(Participant D) Can Work Together And Must Answer All The Four
-          Questions.
+          C),(Participant D) Can Work Together And Must Answer The Given
+          Question.
         </li>
         <li>If Answered correctly: Team wins!</li>
-        <li>If Answered incorrectly: Team is eliminated.</li>
       </ul>
 
       <h2>Winning Condition:</h2>
@@ -547,12 +558,24 @@
         reasoning through a series of interactive, brain-teasing puzzles.
       </p>
 
-      <h2>Participants:</h2>
-      <p class="highlight">Each team consists of 2 members.</p>
-      <p>
-        If you don't have a teammate, don't worry! You'll be paired randomly at
-        the venue.
+      <h2>Team Formation:</h2>
+      <p class="highlight">
+        Each team should consist of 3 to 5 members. A maximum of 2 members from
+        each team are allowed to answer the questions displayed in the computer
+        program.
       </p>
+
+      <p>
+        Example 1: In a team of 3, all 3 members can participate in the treasure
+        hunt, but only 2 members can answer the questions in the computer
+        program.
+      </p>
+      <p>
+        Example 2: In a team of 5, all 5 members can join the treasure hunt, but
+        only 2 members are permitted to answer the questions in the computer
+        program.
+      </p>
+      <p>The same rule applies to teams with 4 members.</p>
 
       <h2>How to Play:</h2>
       <ul>
@@ -562,15 +585,15 @@
         </li>
         <li>
           The First Clue: Each team will receive a riddle or clue that leads to
-          a hidden box or ball located somewhere on the campus. Note⚠️:
-          Participants must return to the Venue with the Hidden Ball Inside The
-          Hidden box within 15 minutes, else You Will be Disqualified.
+          a hidden box or ball located somewhere on the campus.
+        </li>
+        <li>
+          Note⚠️: Participants must return to the Venue with the Hidden Ball
+          Inside The Hidden box within 15 minutes.
         </li>
         <li>
           The Secret Number: Inside the object, you'll find a number. Return to
-          the venue with it. Note ⚠️: Enter this Secret number as instructed by
-          the Computer program prompt; otherwise, you will be unable to proceed
-          with the activity and You may disqualified..
+          the venue with it.
         </li>
 
         <li>
@@ -580,8 +603,8 @@
         <li>Follow these steps:</li>
         <ul>
           <li>
-            Enter both participants' names, email IDs, phone numbers, and any
-            other details requested by the Computer program.
+            Enter participants' names, email IDs, phone numbers, and any other
+            details requested by the Computer program.
           </li>
           <li>Read the rules carefully.</li>
           <li>Press "YES" to start.</li>
@@ -617,6 +640,18 @@
         teams have the same score, the fastest team among them (based on time
         taken to finish) will be declared the winner.
       </p>
+    </section>
+
+    <!-- NEW Registration Section (Added) -->
+    <section class="registration-section">
+      <p>Click below to register for the event.</p>
+      <a
+        class="register-button"
+        href="https://forms.gle/HTmsZWaKkgYKCpr6A"
+        target="_blank"
+      >
+        REGISTER NOW
+      </a>
     </section>
 
     <!-- Footer -->
